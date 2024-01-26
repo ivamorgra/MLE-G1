@@ -1,0 +1,37 @@
+<annotation>
+	<folder>n02097209</folder>
+	<filename>n02097209_12</filename>
+	<source>
+		<database>ILSVRC_2012</database>
+	</source>
+	<size>
+		<width>1600</width>
+		<height>1200</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>n02097209</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1043</xmin>
+			<ymin>107</ymin>
+			<xmax>1530</xmax>
+			<ymax>761</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>n02097209</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>396</xmin>
+			<ymin>474</ymin>
+			<xmax>645</xmax>
+			<ymax>759</ymax>
+		</bndbox>
+	</object>
+</annotation>
