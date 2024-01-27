@@ -1,5 +1,7 @@
 import os
 import shutil
+import math
+from statistics import mean
 
 import xml.etree.ElementTree as ET
 
@@ -88,3 +90,41 @@ def calculate_absolute_difference(box1, box2):
     # You can sum up the absolute differences or use any other measure
     total_absolute_difference = diff_xmin + diff_ymin + diff_xmax + diff_ymax
     return total_absolute_difference
+
+def get_scores(results, threshold):
+    TP = 0
+    FP = 0
+    FN = 0
+    # R2 is non-significant because all actual values are 1
+    mse = 0
+    mae = 0
+    mlse = 0
+
+    n = len(results)
+    for result in results:
+        if result == 0:
+            FN += 1
+        elif result < threshold:
+            FP += 1
+        else:
+            TP += 1
+
+        mse += (1 - result) ** 2
+        mae += abs(1 - result)
+        mlse += (math.log(1 + 1) - math.log(1 + result))**2
+    mse /= n
+    mae /= n
+    mlse /= n
+
+    precision = TP/(TP + FP)
+    recall = TP/(TP + FN)
+
+    f1 = 2 * (precision * recall) / (precision + recall)
+
+    return {"average_iou" : mean(results),
+            "precision" : precision,
+            "recall" : recall,
+            "f1" : f1,
+            "mse" : mse, 
+            "mae" : mae, 
+            "mlse" : mlse, }
