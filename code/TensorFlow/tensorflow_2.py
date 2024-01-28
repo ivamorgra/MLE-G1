@@ -295,3 +295,24 @@ score_export_file_path = "tensorflow_opencv_scores.json"
 # Export the dictionary to a JSON file
 with open(score_export_folder_path + score_export_file_path, 'w') as file:
     json.dump(scores, file)
+
+data = results["car"]
+
+merged_array = np.concatenate(list(data.values()))
+
+scores = get_scores(merged_array, threshold)
+
+print("Average IoU: " + str(scores["average_iou"]))
+print("Precision: " + str(scores["precision"]))
+print("Recall: " + str(scores["recall"]))
+print("F1-score: " + str(scores["f1"]))
+print("MSE: " + str(scores["mse"]))
+print("MAE: " + str(scores["mae"]))
+print("MLSE: " + str(scores["mlse"]))
+
+scores["time"] = duracion
+
+score_export_file_path = "yolo_car_opencv_scores.json"
+# Export the dictionary to a JSON file
+with open(score_export_folder_path + score_export_file_path, 'w') as file:
+    json.dump(scores, file)
