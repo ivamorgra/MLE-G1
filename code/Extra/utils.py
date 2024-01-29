@@ -45,6 +45,8 @@ def translate_coco_to_images_net(searched_label):
         label = "dog"
     elif (searched_label in ["n02930766", "n03930630"]) :
         label = "car"
+    elif (searched_label in ["n03895866"]) :
+        label = "train"
     elif (searched_label in ["n07742313"]) :
         label = "apple"
     return label
